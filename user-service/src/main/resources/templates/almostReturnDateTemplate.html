@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+
+        .container {
+            font-size: 21px;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .row{
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container" style="margin-bottom: 50px"><pre>    Dear <span th:text="${firstName}"></span>,</pre> </div>
+<div class="container">
+    <div class="row">
+        <div class="col" style="padding-top: 20px">
+            We hope you enjoyed playing this game. Tommorrow it is the date you have to return <br>
+            the game, <span th:text="${gameTitle}"></span>, due to our terms and conditions, otherwise<br>
+            you will be penalised.
+        </div>
+        <div class="col">
+            <img style="width: 150px" src="../logo-black-pen.png" th:src="|cid:${pen}|">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <pre>  Yours sincerely,<br>the best gamer team.</pre>
+    <div>
+        <img alt="sigla" style="width: 100px; margin-left: 30px" src="../logo-black.png" th:src="|cid:${logo}|">
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="amalia (generated)" id="1597500364213-1">
+        <createTable tableName="category">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-2">
+        <createTable tableName="category_games">
+            <column name="category_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="games_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-3">
+        <createTable tableName="company">
+            <column name="company_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-4">
+        <createTable tableName="developer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-5">
+        <createTable tableName="game">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="average_stars" type="DOUBLE"/>
+            <column name="description" type="TEXT"/>
+            <column name="game_studio" type="VARCHAR(255)"/>
+            <column name="id_serial" type="VARCHAR(255)"/>
+            <column name="rental_count" type="BIGINT"/>
+            <column name="stock" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="year" type="INT"/>
+            <column name="img_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-6">
+        <createTable tableName="game_categories">
+            <column name="game_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="categories_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-7">
+        <createTable tableName="game_cover">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="pic" type="LONGBLOB"/>
+            <column name="type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-8">
+        <createTable tableName="game_developers">
+            <column name="game_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="developers_id" type="BIGINT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-9">
+        <createTable tableName="game_game_ratings">
+            <column name="game_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="game_ratings_id" type="BIGINT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-10">
+        <createTable tableName="game_rating">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="date" type="date"/>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="value" type="DOUBLE"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-11">
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-12">
+        <createTable tableName="penalty">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="penalty_added_date" type="date"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-13">
+        <createTable tableName="role">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-14">
+        <createTable tableName="user">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="ban_until" type="date"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="enabled" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="is_admin" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_banned" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="skipped" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="company_id" type="BIGINT"/>
+            <column name="img_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-15">
+        <createTable tableName="user_categories">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="categories_id" type="BIGINT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-16">
+        <createTable tableName="user_penalties">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="penalties_id" type="BIGINT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-17">
+        <createTable tableName="user_roles">
+            <column name="user_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="role_id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-18">
+        <createTable tableName="users_rentals">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="generated_penalty" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="return_date" type="date"/>
+            <column name="game_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-19">
+        <createTable tableName="verification_token">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="expiration_date" type="datetime"/>
+            <column name="token" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-20">
+        <createIndex indexName="FK2ymuvff1ss2t2pgkdfjntnxy7" tableName="game">
+            <column name="img_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-21">
+        <createIndex indexName="FK2yuxsfrkkrnkn5emoobcnnc3r" tableName="user">
+            <column name="company_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-22">
+        <createIndex indexName="FK7k6079mhjvfiu88mo0gmm1jrn" tableName="game_game_ratings">
+            <column name="game_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-23">
+        <createIndex indexName="FK_VERIFY_USER" tableName="verification_token">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-24">
+        <createIndex indexName="FKapl41xhoay4e4gos36cfcvip3" tableName="user">
+            <column name="img_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-25">
+        <createIndex indexName="FKb8xsnxx57fno7u72njqriahu5" tableName="category_games">
+            <column name="games_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-26">
+        <createIndex indexName="FKd6waavfh76ysrsw09jaf7tgrn" tableName="game_categories">
+            <column name="game_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-27">
+        <createIndex indexName="FKdl2hciyadwrs2ad9ulmm9fqr2" tableName="category_games">
+            <column name="category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-28">
+        <createIndex indexName="FKgkvycw14phmxjy6mr0x0km7qa" tableName="game_rating">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-29">
+        <createIndex indexName="FKh4hwxuiwxocn376c87k5kl6dx" tableName="game_categories">
+            <column name="categories_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-30">
+        <createIndex indexName="FKhsr28y6wicuifgp909rfn2065" tableName="users_rentals">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-31">
+        <createIndex indexName="FKnue6oc7m163atqyofs94t0dlq" tableName="user_penalties">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-32">
+        <createIndex indexName="FKqhdol0ia96a31f8ir2g928ems" tableName="user_categories">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-33">
+        <createIndex indexName="FKrhfovtciq1l558cw6udg0h0d3" tableName="user_roles">
+            <column name="role_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-34">
+        <createIndex indexName="FKs1nbhkkmukkjnmvn7th0njkrl" tableName="users_rentals">
+            <column name="game_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-35">
+        <createIndex indexName="FKs4ijsvpij53dsl143xvrgbs09" tableName="game_developers">
+            <column name="game_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-36">
+        <addForeignKeyConstraint baseColumnNames="img_id" baseTableName="game" constraintName="FK2ymuvff1ss2t2pgkdfjntnxy7" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="game_cover" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-37">
+        <addForeignKeyConstraint baseColumnNames="company_id" baseTableName="user" constraintName="FK2yuxsfrkkrnkn5emoobcnnc3r" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="company_id" referencedTableName="company" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-38">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_roles" constraintName="FK55itppkw3i07do3h7qoclqd4k" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-39">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="game_game_ratings" constraintName="FK7k6079mhjvfiu88mo0gmm1jrn" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="game" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-40">
+        <addForeignKeyConstraint baseColumnNames="penalties_id" baseTableName="user_penalties" constraintName="FK7m2gxt7uqkgkun3l4miewadba" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="penalty" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-41">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="verification_token" constraintName="FK_VERIFY_USER" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-42">
+        <addForeignKeyConstraint baseColumnNames="developers_id" baseTableName="game_developers" constraintName="FKaan2gke84lmthfkevqlwybxha" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="developer" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-43">
+        <addForeignKeyConstraint baseColumnNames="img_id" baseTableName="user" constraintName="FKapl41xhoay4e4gos36cfcvip3" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="game_cover" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-44">
+        <addForeignKeyConstraint baseColumnNames="games_id" baseTableName="category_games" constraintName="FKb8xsnxx57fno7u72njqriahu5" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="game" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-45">
+        <addForeignKeyConstraint baseColumnNames="categories_id" baseTableName="user_categories" constraintName="FKcq042bp80xwaxx42vapvncsif" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="category" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-46">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="game_categories" constraintName="FKd6waavfh76ysrsw09jaf7tgrn" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="game" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-47">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="category_games" constraintName="FKdl2hciyadwrs2ad9ulmm9fqr2" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="category" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-48">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="game_rating" constraintName="FKgkvycw14phmxjy6mr0x0km7qa" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-49">
+        <addForeignKeyConstraint baseColumnNames="categories_id" baseTableName="game_categories" constraintName="FKh4hwxuiwxocn376c87k5kl6dx" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="category" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-50">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_rentals" constraintName="FKhsr28y6wicuifgp909rfn2065" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-51">
+        <addForeignKeyConstraint baseColumnNames="game_ratings_id" baseTableName="game_game_ratings" constraintName="FKjwi4ade56ofgvj2727cf7jjkp" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="game_rating" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-52">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_penalties" constraintName="FKnue6oc7m163atqyofs94t0dlq" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-53">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_categories" constraintName="FKqhdol0ia96a31f8ir2g928ems" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-54">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="user_roles" constraintName="FKrhfovtciq1l558cw6udg0h0d3" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="role" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-55">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="users_rentals" constraintName="FKs1nbhkkmukkjnmvn7th0njkrl" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="game" validate="true"/>
+    </changeSet>
+    <changeSet author="amalia (generated)" id="1597500364213-56">
+        <addForeignKeyConstraint baseColumnNames="game_id" baseTableName="game_developers" constraintName="FKs4ijsvpij53dsl143xvrgbs09" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="game" validate="true"/>
+    </changeSet>
+
+    <changeSet author="amalia (generated)" id="20200815-1900">
+        <createTable tableName="hibernate_sequences">
+            <column name="sequence_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="next_val" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="20200815-1900" author="amalia">
+        <dropTable tableName="hibernate_sequences"/>
+    </changeSet>
+
+</databaseChangeLog>

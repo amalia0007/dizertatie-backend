@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+
+        .container {
+            font-size: 21px;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .row {
+            display: flex;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container" style="margin-bottom: 50px">
+    <pre>    Dear <span th:text="${firstName}"></span>,</pre>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col" style="padding-top: 20px">
+            We are sending you a magical key to activate your account.<br>
+            <b><span style="align-content: center; margin-left: auto; margin-top: 20px; margin-bottom: 20px" th:text="${code}"></span></b><br>
+            Write your unique code in the special box at login and start playing your favorite games!
+        </div>
+        <div class="col">
+            <img style="width: 150px" src="../logo-black-pen.png" th:src="|cid:${pen}|">
+        </div>
+    </div>
+</div>
+<div class="container">
+    <pre>  Yours sincerely,<br>the best gamer team.</pre>
+    <div>
+        <img alt="sigla" style="width: 100px; margin-left: 30px" src="../logo-black.png" th:src="|cid:${logo}|">
+    </div>
+</div>
+
+</body>
+</html>

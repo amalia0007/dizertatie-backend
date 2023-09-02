@@ -1,0 +1,69 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+
+    <changeSet id="20200815-1853" author="amalia">
+        <insert tableName="hibernate_sequence">
+            <column name="next_val" value="0"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20200815-1904-1" author="amalia">
+        <insert tableName="role">
+            <column name="type" value="ROLE_ADMIN"/>
+            <column name="description" value="Administrator"/>
+            <column name="id" value="2"/>
+        </insert>
+        <insert tableName="role">
+            <column name="type" value="ROLE_USER"/>
+            <column name="description" value="New user"/>
+            <column name="id" value="3"/>
+        </insert>
+        <insert tableName="role">
+            <column name="type" value="ROLE_SUPER_ADMIN"/>
+            <column name="description" value="Super Admin"/>
+            <column name="id" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20200815-1904-2" author="amalia">
+        <insert tableName="company">
+            <column name="company_id" value="1"/>
+            <column name="name" value="AdminComp"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20200815-1904-3" author="amalia">
+        <insert tableName="game_cover">
+            <column name="id" value="1"/>
+            <column name="name" value="Default"/>
+            <column name="pic"/>
+            <column name="type" value="Default"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20200815-1904-4" author="amalia">
+        <insert tableName="user">
+            <column name="id" value="1"/>
+            <column name="ban_until"/>
+            <column name="email" value="licenta2020ase@gmail.com"/>
+            <column name="enabled" valueComputed="b'1'"/>
+            <column name="first_name" value="Admin"/>
+            <column name="is_admin" valueComputed="b'1'"/>
+            <column name="is_banned" valueComputed="b'0'"/>
+            <column name="last_name" value="Admin"/>
+            <column name="password" value="$2a$10$KQnuvq11fcHY2XtfajRze.B4VlIN8sWyn4JqLkTWi3TqmhxwvWuyC"/>
+            <column name="skipped" valueComputed="b'1'"/>
+            <column name="company_id" value="1"/>
+            <column name="img_id" value="1"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="20200815-1904-5" author="amalia">
+        <insert tableName="user_roles">
+            <column name="user_id" value="1"/>
+            <column name="role_id" value="1"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
