@@ -85,7 +85,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter implements W
                 .authorizeRequests()
                 .antMatchers("/authenticate", "/register", "/registerConfirm",
                         "/reminder", "/forgotPassword", "/resetPassword", "/returngame", "/resendVerificationLink",
-                        "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll().
+                        "/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**", "/hystrix", "/hystrix/**").permitAll().
                 // all other requests need to be authenticated
                         anyRequest().authenticated().and().
                 // make sure we use stateless session; session won't be used to

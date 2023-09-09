@@ -32,3 +32,4 @@ Create a Docker config in intellij, based on the following template of registry-
 Using Docker Desktop, push the resulting image(s) into Docker Hub.
 <br/>
 Restart (or create from scratch) the Container Instance config in Azure Portal, that has the prefix "ci-" .
+
