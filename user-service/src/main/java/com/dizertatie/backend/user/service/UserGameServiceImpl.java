@@ -8,6 +8,7 @@ import com.dizertatie.backend.user.exception.UserHasPenaltiesException;
 import com.dizertatie.backend.user.model.*;
 import com.dizertatie.backend.user.pojo.ResponsePageList;
 import com.dizertatie.backend.user.repository.UserGameRepository;
+import com.dizertatie.backend.user.util.RequestUtil;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.data.domain.Sort;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -43,7 +44,7 @@ public class UserGameServiceImpl implements UserGameService {
 
         //check if we dont have any more games of this type
         //we use gameService because we want to check the stack value from database, not from the request we sended
-        Game game = gameService.findGameById(usersRentals.getGame().getId());
+        Game game = gameService.findGameById(usersRentals.getGame().getId(), authToken());
 
         if (game.getStock() <= 0)
             throw new GameOutOfStock();
@@ -60,7 +61,7 @@ public class UserGameServiceImpl implements UserGameService {
             game.increaseRentalCount();
             usersRentals.setReturn_date(LocalDate.now().plusDays(10));
 
-            gameService.save(game);
+            gameService.save(game, authToken());
             userGameRepository.save(usersRentals);
         } else
             //throws com.dizertatie.backend.game.exception and doesn`t save userGame instance if user has 2 penalties
@@ -159,13 +160,17 @@ public class UserGameServiceImpl implements UserGameService {
     public List<StatusChart> populateStatusChart() {
 
         List<StatusChart> statusCharts = new ArrayList<>();
-        long countAvailable = gameService.getGames().stream().mapToLong(Game::getStock).sum();
+        long countAvailable = gameService.getGames(authToken()).stream().mapToLong(Game::getStock).sum();
         long countBlocked = userGameRepository.findAll().stream().filter(UsersRentals::isGeneratedPenalty).count();
         long countRented = userGameRepository.findAll().stream().filter(userGame -> !userGame.isGeneratedPenalty()).count();
         statusCharts.add(new StatusChart(countAvailable, "Available"));
 //        statusCharts.add(new StatusChart(countBlocked, "Blocked"));
         statusCharts.add(new StatusChart(countRented, "Rented"));
         return statusCharts;
+    }
+
+    private String authToken() {
+        return RequestUtil.getCurrentHttpRequest().getHeader("Authorization");
     }
 }
 

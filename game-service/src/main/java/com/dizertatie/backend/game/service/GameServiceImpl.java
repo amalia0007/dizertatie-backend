@@ -5,6 +5,7 @@ import com.dizertatie.backend.game.exception.PagingSortingErrorResponse;
 import com.dizertatie.backend.game.model.*;
 import com.dizertatie.backend.game.pojo.ResponsePageList;
 import com.dizertatie.backend.game.repository.GameRepository;
+import com.dizertatie.backend.game.util.RequestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.support.PagedListHolder;
 import org.springframework.context.annotation.Lazy;
@@ -103,7 +104,7 @@ public class GameServiceImpl implements GameService {
             throw new PaginationSortingException("Invalid orderBy condition");
         }
 
-        User user = userService.findById(Long.parseLong(id)).orElse(null);
+        User user = userService.findById(Long.parseLong(id), RequestUtil.getCurrentHttpRequest().getHeader("Authorization")).orElse(null);
         assert user != null;
         List<Category> categoryList = user.getCategories();
         List<Game> uniqueList = new ArrayList<>();
